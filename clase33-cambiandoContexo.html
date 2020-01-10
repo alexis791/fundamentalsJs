@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cambiando Contexto al llamar un funcion</title>
+</head>
+<body>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script>
+            const alexis = {
+                nombre: 'Alexis',
+                apellido: 'Delgado',
+                edad: 28
+            }
+
+            function saludar(saludo) {
+                console.log(`${saludo}, mi nombre es ${this.nombre}`)
+            }
+
+            /*La funcion bind nos sirve para enlazar la funcion
+            con la variables que será nuestro contexto o el nuevo this
+            */
+            const saludarAAlexis = saludar.bind(alexis, 'Hola camarada')
+            saludarAAlexis()
+
+            /*La funcion call llama inmediatamente la funcion con el contexto
+             indicado. */
+            saludar.call(alexis, 'Hola amigo')
+
+            /*apply es igual que call solo que los parametros se pasa por 
+            medio de arreglo*/
+            saludar.apply(alexis, ['Hola ¿Comó estas?'])
+
+        </script>
+</body>
+</html>
